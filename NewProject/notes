@@ -1,0 +1,10 @@
+Routing in React
+react-router-dom and routerProvider
+NavLink provide the isactive callback to mark current tab
+
+useParam to get the id from the url
+
+useNavigation - move one to another page without reloading
+
+
+nested routing -> outlet component is mandatory to put inside the parent component, that want to make

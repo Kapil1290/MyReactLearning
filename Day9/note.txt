@@ -1,0 +1,4 @@
+
+Resources for the code 
+1. zod provide form related facilities like validation schema and other more
+2. react hook form provide the form facilities but less than zod
