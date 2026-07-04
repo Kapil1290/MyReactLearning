@@ -1,4 +1,5 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit"
+import { createSlice, nanoid, current } from "@reduxjs/toolkit"
+
 
 const initialState = {
     todos: [
@@ -10,29 +11,31 @@ const initialState = {
 }    
 
 export const todoSlice = createSlice({
-    name: "todos",
+    name: 'todo',
     initialState,   /** this is the state coming from above initialState */
     reducers: {
         addTodo: (state, action) => {
             const todo = {
                 id: nanoid(),
-                text: action.payload
+                text: action.payload.text
+                
             }
+            console.log("state before adding todo",current, JSON.parse(JSON.stringify(state.todos)))
             state.todos.push(todo)
         },
         removeTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload.id)
         },
-        updateTodo: (state, action) => {
-            const { id, text } = action.payload
-            const existingTodo = state.todos.find((todo) => todo.id === id)
-            if (existingTodo) {
-                existingTodo.text = text
-            }
-        }
+        // updateTodo: (state, action) => {
+        //     const { id, text } = action.payload
+        //     const existingTodo = state.todos.find((todo) => todo.id === id)
+        //     if (existingTodo) {
+        //         existingTodo.text = text
+        //     }
+        // }
     }
 })    
 
-export const { addTodo, removeTodo, updateTodo } = todoSlice.actions  /** here actions contains addtodo, removetodo, and updatetodo */
+export const { addTodo, removeTodo } = todoSlice.actions  /** here actions contains addtodo, removetodo, and updatetodo */
 
 export default todoSlice.reducer  /** this is the reducer which will be used in the store.js file */
