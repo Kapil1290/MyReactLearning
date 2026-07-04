@@ -4,12 +4,17 @@ import {addTodo} from '../features/todo/todoSlice'
 
 export default function AddTodo() {
     const [input, setInput] = useState("")
-
     const dispatch = useDispatch();
+    const [placeholder, setPlaceholder] = useState("Enter a todo")
 
     const addTodoHandler = (e) => {
         e.preventDefault()
-        dispatch(addTodo(input))
+        if(input.trim() === ""){
+            setPlaceholder("Please enter a valid todo")
+            return;
+        }
+        let val = input.toUpperCase();
+        dispatch(addTodo({ text: val }))
         setInput("")
     }
   return (
@@ -17,7 +22,7 @@ export default function AddTodo() {
       <input
         type="text"
         className="bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        placeholder="Enter a Todo..."
+        placeholder={placeholder}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />

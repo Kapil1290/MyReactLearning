@@ -3,10 +3,10 @@ import { createSlice, nanoid, current } from "@reduxjs/toolkit"
 
 const initialState = {
     todos: [
-        {
-            id: 1,
-            text: "Learn Redux Toolkit"
-        }
+        // {
+        //     id: 1,
+        //     text: "Learn Redux Toolkit"
+        // }
     ],
 }    
 
@@ -20,19 +20,18 @@ export const todoSlice = createSlice({
                 text: action.payload.text
                 
             }
-            console.log("state before adding todo",current, JSON.parse(JSON.stringify(state.todos)))
             state.todos.push(todo)
         },
         removeTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload.id)
         },
-        // updateTodo: (state, action) => {
-        //     const { id, text } = action.payload
-        //     const existingTodo = state.todos.find((todo) => todo.id === id)
-        //     if (existingTodo) {
-        //         existingTodo.text = text
-        //     }
-        // }
+        updateTodo: (state, action) => {
+            const { id, text } = action.payload
+            const existingTodo = state.todos.find((todo) => todo.id === id)
+            if (existingTodo) {
+                existingTodo.text = text
+            }
+        }
     }
 })    
 
