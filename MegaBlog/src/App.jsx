@@ -1,6 +1,9 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
+import { Footer, Header } from "./components/index.js";
+import {login, logout} from './store/authSlice.js'
+
 
 
 function App() {
@@ -14,13 +17,23 @@ function App() {
       if(userData){
         dispatch(login({userData}))
       }else{
-        dispatch(logout())
+        dispatch(logout({}))
       }
     })
     .finally(()=>setLoading(false))
   },[])
 
-  return !loading ? () : ()
+  return !loading ? (
+    <div className="min-h-sc flex flex-wrap bg-gray-200 content-between">
+      <div className="w-full block">
+        <Header/>
+        <main>
+          {/* <Outlet/> */}
+        </main>
+        <Footer/>
+      </div>
+    </div>
+  ) : null;
 
 
 }

@@ -1,4 +1,4 @@
-import config from '../config.js';
+import config from '../config/config.js';
 import { Client, Account } from 'appwrite';
 
 
@@ -37,9 +37,9 @@ export class AuthService {
 
     async getCurrentUser(){
         try{
-            return await this.account.get();
+            // return await this.account.get();
         }catch(error){
-            console.log("Appwrite error :: service :: error", error)
+            console.log("errored here", error)
         }
         return null;
     }
