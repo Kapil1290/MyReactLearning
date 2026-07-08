@@ -48,7 +48,7 @@ export class AuthService {
         try{
             return await this.account.deleteSessions();
         }catch(error){
-            console.log("Arrwrite Error :: service :: logout error", error)
+            console.log("Error during logout-------------", error)
         }
     }
 
