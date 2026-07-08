@@ -26,7 +26,7 @@ function App() {
   return !loading ? (
     <div className="min-h-screen flex flex-wrap
 
-     content-between bg-gray-400">
+     content-between bg-lime-300 ">
       <div className='w-full  flex flex-col justify-center items-center my-7 '>
         <Header/>
         <main>
