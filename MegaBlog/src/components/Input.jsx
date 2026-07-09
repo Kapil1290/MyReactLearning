@@ -15,12 +15,13 @@ const Input = React.forwardRef(function Input({
                  {label}
                 </label>
             }
-
             {
                 <input type={type} 
-                className={`w-full outline-none rounded-md border
-                     border-gray-300 ${className}`}
+                    className={`w-full outline-none rounded-md border
+                    border-gray-300 ${className}`}
                     ref={ref}
+                    {...props}
+                    id={id}
                 />
             }
         </div>
