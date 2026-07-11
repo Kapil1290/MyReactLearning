@@ -88,6 +88,13 @@ function Signup() {
                         })}
                         />
                     </div>
+
+                    <Button 
+                    type="submit"
+                    className="w-full"
+                    >
+                        Create Account
+                    </Button>
                 </form>
             </div>
 
