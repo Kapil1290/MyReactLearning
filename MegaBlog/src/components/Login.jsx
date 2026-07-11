@@ -1,35 +1,81 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import {login as authLogin} from '../store/authSlice'
-import {Input, Button, Logo} from '../components'
+import { login as authLogin } from '../store/authSlice'
+import { Input, Button, Logo } from '../components'
 import { useDispatch } from 'react-redux'
-import authService from '../appwrite/auth' 
-import {useForm} from 'react-hook-form'
+import authService from '../appwrite/auth'
+import { useForm } from 'react-hook-form'
 
 function Login() {
     const navigate = navigate()
     const dispatch = useDispatch()
-    const {register, handleSubmit} = useForm()
+    const { register, handleSubmit } = useForm()
     const [error, setError] = useState("");
 
-    const login = async(data) =>{
+    const login = async (data) => {
         setError("")
 
-        try{
+        try {
             const session = await authService.login(data)
-            if(session){
-                const userData = await authService.getCurrentUser()   
-                if(userData){
+            if (session) {
+                const userData = await authService.getCurrentUser()
+                if (userData) {
                     useDispatch(authLogin(userData))
                     navigate('/')
                 }
             }
-        }catch(err){
+        } catch (err) {
             setError(err.message)
         }
-    } 
+    }
     return (
-        <div>Form</div>
+        <div className='flex items-center justify-center w-full'>
+            <div>
+                <div className='mb-2 flex justify-center'>
+                    <span className='inline-block w-full
+                '>
+                        <Logo width='100%' />
+                    </span>
+                </div>
+                <h2 className='
+            text-center text-2xl font-bold
+            leading-tight'>Sign in to your account</h2>
+
+                <p className='
+            mt-2 text-center text-base text-black/35
+            '>
+                    Don&apos;t have an account?&nbsp;
+                    <Link to='/signup'
+                        className='font-medium text-primary
+                transition-all duration-200 
+                hover:underline'
+                    >
+                        SignUp
+                    </Link>
+                </p>
+                {
+                    error && <p className='text-red-600 font-bold'>{error}</p>
+                }
+                <form onSubmit={handleSubmit(login)} 
+                className='mt-8'>
+
+                    <div className='space-y-5'>
+                        <Input
+                        label="Email: "
+                        placeholder='Enter Your Email'
+                        type='email'
+                        {...register("username", {
+                            required:true
+                        })}
+                        />
+                        <Button 
+                         type="submit"
+                         className="w-full"
+                        >SignIn</Button>
+                    </div>
+                </form>
+            </div>
+        </div>
     )
 }
 
