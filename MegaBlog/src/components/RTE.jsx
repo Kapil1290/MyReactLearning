@@ -27,10 +27,11 @@ export default function RTE({ name, control, label, defaultvalue = "" }) {
                                     'insertdatetime media table paste code help workcount'
                                 ],
                                 toolbar:
-                                    'undo redo | formatselect | bold italic backcolor | \ alignleft alignright aligncenter alignjustify | \ bullist numlist outdent indent | removeformat | help',
+                                    'undo redo | formatselect | bold | italic | backcolor | forecolor| alignleft alignright aligncenter alignjustify | bullist numlist outdent indent | removeformat | help',
                             }
 
                         }
+                        onEditorChange={onChange}
                     />
                 )}
             />
