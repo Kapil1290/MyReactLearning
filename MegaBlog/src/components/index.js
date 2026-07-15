@@ -8,17 +8,22 @@ import Select from './Select';
 import Input from './Input';
 import Postcard from './Postcard';
 import RTE from './RTE';
-
+import Signup from '../components/Signup';
+import PostForm from './PostForm/PostForm';
+import AuthLayout from '../components/AuthLayout'
 
 export {
     Header, 
     Footer,
     Select,
-    PostCard,
+    Postcard,
     Container,
     Logo,
     LogoutBtn,
     Input,
+    AuthLayout,
     Login,
-    RTE
+    Signup,
+    RTE,
+    PostForm
 };

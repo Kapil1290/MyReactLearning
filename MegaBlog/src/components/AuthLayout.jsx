@@ -20,4 +20,4 @@ export default function Protected({children, authentication = true}) {
     return loader ? <h2>Loading....</h2> : <>{children}</>
 }
 
-export default AuthLayout
+// export default AuthLayout

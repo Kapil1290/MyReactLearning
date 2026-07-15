@@ -39,4 +39,4 @@ export default function RTE({ name, control, label, defaultvalue = "" }) {
     )
 }
 
-export default RTE
+// export default RTE
