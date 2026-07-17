@@ -11,6 +11,7 @@ import RTE from './RTE';
 import Signup from '../components/Signup';
 import PostForm from './PostForm/PostForm';
 import AuthLayout from '../components/AuthLayout'
+import Button from './Button';
 
 export {
     Header, 
@@ -22,6 +23,7 @@ export {
     LogoutBtn,
     Input,
     AuthLayout,
+    Button,
     Login,
     Signup,
     RTE,
